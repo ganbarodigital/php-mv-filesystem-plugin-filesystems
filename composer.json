@@ -8,6 +8,10 @@
     "repositories": [
         {
             "type": "vcs",
+            "url": "https://github.com/ganbarodigital/php-mv-filesystem"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/stuartherbert/Couscous"
         }
     ],
