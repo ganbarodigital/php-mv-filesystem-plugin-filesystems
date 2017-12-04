@@ -12,3 +12,4 @@
   - added Copy operation
   - added GetFileContents operation
   - added Move operation
+  - added PutFileContents operation
