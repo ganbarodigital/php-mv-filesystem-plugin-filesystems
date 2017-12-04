@@ -98,10 +98,15 @@ class Filesystems implements Filesystem
      * @return Filesystem
      *         the filesystem that $fullPath points to
      */
-    public function getFilesystemForPath($fullPath) : Filesystem
+    public function getFilesystemForPath($fullPath, OnFatal $onFatal) : Filesystem
     {
         $pathInfo = TypeConverters\ToPathInfo::from($fullPath);
-        return $this->filesystems[$pathInfo->getFilesystemPrefix()];
+
+        $retval = $this->filesystems[$pathInfo->getFilesystemPrefix()] ?? null;
+        if ($retval === null) {
+            throw $onFatal($fullPath, "no filesystem called {$pathInfo->getFilesystemPrefix()} registered; registered filesystems are " . implode(", ", array_keys($this->filesystems)));
+        }
+        return $retval;
     }
 
     // ==================================================================
@@ -132,7 +137,7 @@ class Filesystems implements Filesystem
     public function getFolder($fullPath, OnFatal $onFatal) : FilesystemContents
     {
         $pathInfo = TypeConverters\ToPathInfo::from($fullPath);
-        $fs = $this->getFilesystemForPath($pathInfo);
+        $fs = $this->getFilesystemForPath($pathInfo, $onFatal);
         return $fs->getFolder($pathInfo, $onFatal);
     }
 
@@ -148,7 +153,7 @@ class Filesystems implements Filesystem
     public function getFileInfo($fullPath, OnFatal $onFatal) : FileInfo
     {
         $pathInfo = TypeConverters\ToPathInfo::from($fullPath);
-        $fs = $this->getFilesystemForPath($pathInfo);
+        $fs = $this->getFilesystemForPath($pathInfo, $onFatal);
         return $fs->getFileInfo($pathInfo, $onFatal);
     }
 

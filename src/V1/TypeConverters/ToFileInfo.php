@@ -71,7 +71,7 @@ class ToFileInfo implements PluginClass
         $pathInfo = TypeConverters\ToPathInfo::from($path);
 
         // which filesystem do we really want?
-        $realFs = $fs->getFilesystemForPath($pathInfo);
+        $realFs = $fs->getFilesystemForPath($pathInfo, $onFatal);
 
         // ask it to do the type conversion for us
         return CallPlugin::using($realFs, 'TypeConverters\\ToFileInfo', 'from', $realFs, $pathInfo, $onFatal);
