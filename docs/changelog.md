@@ -11,3 +11,4 @@
 * Initial support for operations on multiple filesystems
   - added Copy operation
   - added GetFileContents operation
+  - added Move operation
