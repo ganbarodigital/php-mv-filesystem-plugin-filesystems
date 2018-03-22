@@ -13,3 +13,6 @@
   - added GetFileContents operation
   - added Move operation
   - added PutFileContents operation
+* Initial support for key/value pair metadata
+  - added GetFileMetadata operation
+  - added PutFileMetadata operation
