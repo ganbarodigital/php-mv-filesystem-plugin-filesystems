@@ -85,6 +85,7 @@ class Copy implements PluginClass
         // if we get here, then we are copying between
         // two different filesystems
         $realSourceContents = CallPlugin::using($realSourceFs, "Operations\GetFileContents", "using", $realSourceFs, $sourcePathInfo, $onFatal);
+
         CallPlugin::using($realDestFs, "Operations\\PutFileContents", "using", $realDestFs, $destPathInfo, $realSourceContents, $onFatal);
     }
 }

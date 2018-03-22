@@ -57,7 +57,7 @@ class PutFileContents implements PluginClass
     /**
      * save data to a file
      *
-     * @param  Filesystem $fs
+     * @param  Filesystems $fs
      *         the filesystem we are working with
      * @param  string|PathInfo $path
      *         what are we writing to?
