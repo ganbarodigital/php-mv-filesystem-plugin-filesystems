@@ -11,6 +11,7 @@
 * Initial support for operations on multiple filesystems
   - added Copy operation
   - added GetFileContents operation
+  - added GetImageDimensions operation
   - added Move operation
   - added PutFileContents operation
 * Initial support for key/value pair metadata
